@@ -1,10 +1,14 @@
-##Introduction （https://fanyi.baidu.com Chinese to English)
+## 简介
 
--Support HDMI implementation of Intel i915 on HASWELL platform (i7-4700HQ) under Linux 5.4 LTS version 4k@30Hz The resolution. My laptop is already very old, and coupled with being unemployed, I cannot afford a new one. As a programmer with over 50 years of experience, it's quite difficult to find another job, and this old laptop (i7-4700HQ) can still compete. The laptop is installed with the ArchLinux operating system. With the upgrade of the kernel version, the broadcom wl driver for the wireless network card has started to have problems, often causing OOPs and requiring uninstallation and reloading. At this time, there are two options: one is to modify the broadcom wl driver, but this driver has always existed in the form of dkms, and it is estimated that the difficulty of modification is not small. Another option is to roll back the kernel version, which is relatively simple, just find an LTS version. I chose LTS54 because I am familiar with this version and it is relatively stable. The only issue with this kernel currently is that i915 does not support HDMI 4k@30Hz Mode, maximum can only 1920@60Hz The amount of data transmitted in these two modes is the same, it's not a bandwidth issue. After testing, it was found that i915 supports LTS61 4k@30Hz After careful consideration, it has been decided to refer to LTS61 and have LTS54 support it 4k@30Hz There are also two options, one is to port the i915 driver of LTS61 backwards, but after starting, I found it difficult and gave up. One way is to modify the i915 driver of LTS54. After comparison, it was found that the problem should be with the 297MHz clock, which should be feasible. I just separated the i915 driver and made it into a dkms. Due to my first encounter with GPU related parts, it was still a bit complicated. After several days of modification, the functionality has been implemented and no problems have been found in use.
-##Use
--Copy i915-54 to the/etc/src directory and then execute dkms build -m i915 -v 54，dkms install -m i915 -v 54，mkinitcpio -p linux-lts54， Just restart.
-##Invite developers to have coffee
--Welcome to buy me a cup of coffee with Alipay or WeChat
--One yuan for instant drinks, 5 yuan for capsules, 12 yuan for the whole family, 33 yuan for Starbucks. Thank you very much
+- 支持linux 5.4 lts 版本下的intel i915 在 HASWELL 平台上（ i7-4700HQ）实现hdmi 4k@30Hz的分辨率。本人的笔记本已经很老了，加上失业了，买不起新的。作为一个50+的程序员，再找工作也比较困难，这台老笔记本（ i7-4700HQ）也还能一战。笔记本安装的是ArchLinux操作系统，随着内核版本的升级，无线网卡的驱动 broadcom-wl开始出现问题，经常oop，需要卸载再加载，这个时候有两个选择，一个是修改broadcom-wl驱动，但这个驱动哦一直是以dkms形式存在的，预估修改难度不小。另一个就是回退内核版本，这个相对简单，找个lts版本即可。我选择了lts54，因为对这个版本熟悉一些，比较稳定。这个内核目前唯一的问题就是i915不支持hdmi 4k@30Hz模式，最大只能1920@60Hz。这两种模式传输的数据量是一样的，不是带宽的问题。经过测试，发现lts61下i915支持4k@30Hz，经过思考，决定参照lts61，让lts54支持4k@30Hz。也有两个选择，一个是向后移植lts61的i915驱动，动手后发现难度较大，遂放弃。一种是修改lts54的i915驱动，经过比对，发现应该是297MHz时钟的问题，应该可行。就把i915驱动独立出来，做成了一个dkms，由于第一次接触gpu相关部分，还是有些曲折的，经过几天的修改，目前功能已经实现，使用上也没有发现问题。
+
+## 使用
+
+- 拷贝i915-54到/usr/src目录下，然后执行dkms build -m i915 -v 54，dkms install -m i915 -v 54，mkinitcpio -p linux-lts54，重启即可。
+
+## 请开发者喝咖啡
+
+- 欢迎使用支付宝或微信请我喝杯咖啡
+  - 一元喝速溶、5元喝胶囊、12买全家、33星巴克感激不尽
   
-![alipay_qrcode](./resources/alipay_qrcode.png)  ! [wechat_qrcode](./resources/wechat_qrcode.png)
+  ![alipay_qrcode](./resources/alipay_qrcode.png)  ![wechat_qrcode](./resources/wechat_qrcode.png)
