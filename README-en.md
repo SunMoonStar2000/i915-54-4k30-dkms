@@ -7,4 +7,4 @@
 -Welcome to buy me a cup of coffee with Alipay or WeChat
 -One yuan for instant drinks, 5 yuan for capsules, 12 yuan for the whole family, 33 yuan for Starbucks. Thank you very much
   
-![alipay_qrcode](./resources/alipay_qrcode.png)  ! [wechat_qrcode](./resources/wechat_qrcode.png)
+  ![alipay_qrcode](./resources/alipay_qrcode.png)  ![wechat_qrcode](./resources/wechat_qrcode.png)
